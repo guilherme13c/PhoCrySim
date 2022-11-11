@@ -20,6 +20,7 @@ def list_components():
             "exception": str(type(e))
         })
         
+    print(ret)
     return json.dumps({
         "components": ret, 
         "status": 200
@@ -93,7 +94,8 @@ def junction_y():
 @app.route("/components/split_y")
 def split_y():
     args = request.args
-    Input1 = args.get("Input", type=int)
+    Input = args.get("Input", type=int)
+    print(Input)
     
     try:
         ret = components.Split_Y.calculate(float(Input))

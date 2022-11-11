@@ -52,6 +52,8 @@ class Nor:
         return T2, D2
 # endregion
 
+# TODO: Experiment with sequential logic
+# TODO: Organize the classes above into a package or module
 
 S = [1, 0, 0, 0, 1, 0]
 R = [0, 0, 1, 0, 1, 0]
