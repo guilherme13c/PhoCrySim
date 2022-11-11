@@ -1,4 +1,5 @@
 import requests
+import pandas as pd
 
 # region Paths
 BaseURL = "http://127.0.0.1:5000/"
@@ -11,13 +12,12 @@ SWP = Components+"switch_p"
 class SignalReceiver:
     @staticmethod
     def read(Input):
-        print(Input)
         if Input >= 50:
-          return True
-        elif Input <= 5:
-          return False
+          return 1
+        elif Input <= 25:
+          return 0
         else:
-          return None
+          return -1
 
 class SwN:
     @staticmethod
@@ -52,3 +52,38 @@ class Nor:
         return T2, D2
 # endregion
 
+
+S = [1, 0, 0, 0, 1, 0]
+R = [0, 0, 1, 0, 1, 0]
+
+Q = 0
+Q_ = 0
+
+E = 0
+
+if len(R) != len(S):
+    raise
+
+SIMULATION_DURATION = len(R)
+
+states = {
+    "S":  S,
+    "R":  R,
+    "Q":  [],
+    "Q_": []
+}
+
+for t in range(SIMULATION_DURATION):
+    if E:
+        i = t-1
+        Qt = SwN.calculate_outputs(Q, E)
+        Q_t = SwP.calculate_outputs(Q_, E)
+        Q = Nor.calculate_outputs(80, R[i], Q_t[0])[0]
+        Q_ = Nor.calculate_outputs(80, S[i], Qt[0])[0]
+
+    states["Q_"].append(Q_)
+    states["Q"].append(Q)
+    
+    E = not E
+    
+print(pd.DataFrame(states))
