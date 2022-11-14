@@ -1,4 +1,4 @@
-Input1, Input2, SplitOutput1, SplitOutput2, JunctionOutput
+Input1,Input2,SplitOutput1,SplitOutput2,JunctionOutput
 0,0,0,0,0.0
 10,0,4.21,4.21,8.38
 20,0,8.43,8.43,16.76
