@@ -1,0 +1,3 @@
+{
+	"python.analysis.extraPaths": ["./PhoCrySim-APIs/backend/components"]
+}
