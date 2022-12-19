@@ -1,5 +1,8 @@
 import pandas as pd
 
+# Transmissividade simples
+T_simples=0.679148395;
+
 # region Constants
 TABLE_SW = pd.read_csv(
     "PhoCrySim/LumericalValues/switchValuesV2.csv")
